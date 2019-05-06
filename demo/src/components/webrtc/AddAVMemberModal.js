@@ -72,7 +72,9 @@ class AddAVMemberModal extends React.Component {
                 const { groupMember, gid, selected, joined } = this.props
 
                 let seleted_members = _.difference(members,joined);
-                
+                console.log('------members', members)
+                console.log('------joined', joined)
+                console.log('------seleted_members', seleted_members)
                 this.props.setSelected(seleted_members)
                 this.props.setGid(gid);
                 let jids = []
@@ -82,6 +84,7 @@ class AddAVMemberModal extends React.Component {
                         jids.push(appkey + '_' + elem + '@' + spHost)
                     }
                 }
+                console.log('------jids', jids)
                 const { confrId, password } = me.props.confr
                 for (let jid of jids) {
                     WebIM.call.inviteConference(confrId, password, jid, gid)
